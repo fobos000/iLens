@@ -12,6 +12,8 @@
 		50DB3CC61F92193F00242DAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50DB3CC41F92193F00242DAF /* Main.storyboard */; };
 		50DB3CC81F92193F00242DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DB3CC71F92193F00242DAF /* Assets.xcassets */; };
 		50DB3CCB1F92193F00242DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50DB3CC91F92193F00242DAF /* LaunchScreen.storyboard */; };
+		50DB3CD31F921A8500242DAF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DB3CD21F921A8500242DAF /* CameraView.swift */; };
+		50DB3CD61F93AEE100242DAF /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DB3CD41F93AEE100242DAF /* PhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		50DB3CC71F92193F00242DAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50DB3CCA1F92193F00242DAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50DB3CCC1F92193F00242DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50DB3CD21F921A8500242DAF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		50DB3CD41F93AEE100242DAF /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				50DB3CC71F92193F00242DAF /* Assets.xcassets */,
 				50DB3CC91F92193F00242DAF /* LaunchScreen.storyboard */,
 				50DB3CCC1F92193F00242DAF /* Info.plist */,
+				50DB3CD21F921A8500242DAF /* CameraView.swift */,
+				50DB3CD41F93AEE100242DAF /* PhotoViewController.swift */,
 			);
 			path = iLens;
 			sourceTree = "<group>";
@@ -136,6 +142,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50DB3CD31F921A8500242DAF /* CameraView.swift in Sources */,
+				50DB3CD61F93AEE100242DAF /* PhotoViewController.swift in Sources */,
 				50DB3CC31F92193F00242DAF /* ViewController.swift in Sources */,
 				50DB3CC11F92193F00242DAF /* AppDelegate.swift in Sources */,
 			);
