@@ -113,7 +113,7 @@ extension UIImage {
         VTCreateCGImageFromCVPixelBuffer(pixelBuffer, nil, &cgImage)
         
         if let cgImage = cgImage {
-            self.init(cgImage: cgImage)
+            self.init(cgImage: cgImage, scale: 1.0, orientation: .leftMirrored)
         } else {
             return nil
         }
