@@ -78,30 +78,17 @@ class CameraView: UIView {
     }
     
     func drawRegionBox(box: VNTextObservation) {
-        guard let boxes = box.characterBoxes else {return}
-        var xMin: CGFloat = 9999.0
-        var xMax: CGFloat = 0.0
-        var yMin: CGFloat = 9999.0
-        var yMax: CGFloat = 0.0
-        
-        for char in boxes {
-            if char.bottomLeft.x < xMin {xMin = char.bottomLeft.x}
-            if char.bottomRight.x > xMax {xMax = char.bottomRight.x}
-            if char.bottomRight.y < yMin {yMin = char.bottomRight.y}
-            if char.topRight.y > yMax {yMax = char.topRight.y}
-        }
-        
-        let xCoord = xMin * frame.size.width
-        let yCoord = (1 - yMax) * frame.size.height
-        let width = (xMax - xMin) * frame.size.width
-        let height = (yMax - yMin) * frame.size.height
+        let region = box.boundingBox
+        let regionFrame = CGRect(x: region.minX * frame.size.width,
+                                 y: (1 - region.maxY) * frame.size.height,
+                                 width: region.width * frame.width,
+                                 height: region.height * frame.height)
         
         let layer = CALayer()
-        layer.frame = CGRect(x: xCoord, y: yCoord, width: width, height: height)
+        layer.frame = regionFrame
         layer.borderWidth = 2.0
         layer.borderColor = UIColor.green.cgColor
         
         self.layer.addSublayer(layer)
     }
-
 }
