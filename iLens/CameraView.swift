@@ -12,7 +12,6 @@ import Vision
 
 class CameraView: UIView {
     
-    var session: AVCaptureSession?
     let stillImageOutput = AVCapturePhotoOutput()
     
     private(set) weak var photoOutputDelegate: AVCapturePhotoCaptureDelegate?
@@ -24,8 +23,7 @@ class CameraView: UIView {
     }()
     
     func startCamera() {
-        let session = AVCaptureSession()
-        self.session = session
+        self.session = AVCaptureSession()
         guard let device = AVCaptureDevice.default(for: AVMediaType.video) else {
             return
         }
@@ -33,17 +31,39 @@ class CameraView: UIView {
             return
         }
         
-        session.addInput(input)
-        let prevLayer = AVCaptureVideoPreviewLayer(session: session)
-        prevLayer.frame.size = frame.size
-        prevLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        prevLayer.connection?.videoOrientation = .portrait
+        session?.addInput(input)
+//        let prevLayer = AVCaptureVideoPreviewLayer(session: session)
+//        prevLayer.frame.size = frame.size
+//        prevLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+//        prevLayer.connection?.videoOrientation = .portrait
         
 //        delegate.map{ self.setVideoOutputDelegate($0) }
         
-        layer.addSublayer(prevLayer)
+//        layer.addSublayer(prevLayer)
         
-        session.startRunning()
+        videoPreviewLayer.videoGravity = .resize
+        session?.startRunning()
+    }
+    
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer {
+        guard let layer = layer as? AVCaptureVideoPreviewLayer else {
+            fatalError("Expected `AVCaptureVideoPreviewLayer` type for layer. Check PreviewView.layerClass implementation.")
+        }
+        
+        return layer
+    }
+    
+    var session: AVCaptureSession? {
+        get {
+            return videoPreviewLayer.session
+        }
+        set {
+            videoPreviewLayer.session = newValue
+        }
+    }
+    
+    override class var layerClass: AnyClass {
+        return AVCaptureVideoPreviewLayer.self
     }
     
     func makePhoto() {
@@ -63,6 +83,10 @@ class CameraView: UIView {
         
         if let session = session, session.canAddOutput(videoOutput) {
             session.addOutput(videoOutput)
+            let connection = videoOutput.connection(with: .video)
+            if let connection = connection, connection.isVideoOrientationSupported {
+                connection.videoOrientation = .portrait
+            }
         }
     }
     
@@ -83,12 +107,39 @@ class CameraView: UIView {
                                  y: (1 - region.maxY) * frame.size.height,
                                  width: region.width * frame.width,
                                  height: region.height * frame.height)
-        
+
         let layer = CALayer()
         layer.frame = regionFrame
         layer.borderWidth = 2.0
         layer.borderColor = UIColor.green.cgColor
-        
+
         self.layer.addSublayer(layer)
     }
+    
+//    func drawRegionBox2(box: VNTextObservation) {
+//        guard let boxes = box.characterBoxes else {return}
+//        var xMin: CGFloat = 9999.0
+//        var xMax: CGFloat = 0.0
+//        var yMin: CGFloat = 9999.0
+//        var yMax: CGFloat = 0.0
+//        
+//        for char in boxes {
+//            if char.bottomLeft.x < xMin {xMin = char.bottomLeft.x}
+//            if char.bottomRight.x > xMax {xMax = char.bottomRight.x}
+//            if char.bottomRight.y < yMin {yMin = char.bottomRight.y}
+//            if char.topRight.y > yMax {yMax = char.topRight.y}
+//        }
+//        
+//        let xCoord = xMin * frame.size.width
+//        let yCoord = (1 - yMax) * frame.size.height
+//        let width = (xMax - xMin) * frame.size.width
+//        let height = (yMax - yMin) * frame.size.height
+//        
+//        let layer = CALayer()
+//        layer.frame = CGRect(x: xCoord, y: yCoord, width: width, height: height)
+//        layer.borderWidth = 2.0
+//        layer.borderColor = UIColor.green.cgColor
+//        
+//        self.layer.addSublayer(layer)
+//    }
 }

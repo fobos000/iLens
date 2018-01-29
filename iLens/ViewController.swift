@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     var capturedImage: CGImage?
     
     var currentBuffer: CVPixelBuffer?
-//    var currentObservations: []
+    var currentTextFrames: [CGRect]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         
         let result = observations.flatMap({$0 as? VNTextObservation})
         
-        
+        currentTextFrames = result.map{ $0.boundingBox }
         DispatchQueue.main.async() {
             self.cameraView.clearTextBoxes()
             for region in result {
@@ -58,22 +58,26 @@ class ViewController: UIViewController {
     }
 
     @IBAction func captureTapped(_ sender: Any) {
-//        cameraView.makePhoto()
-        performSegue(withIdentifier: "ShowPhoto", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? PhotoViewController {
-            guard let currentBuffer = currentBuffer else {return}
-            let image = UIImage(pixelBuffer: currentBuffer)
-            vc.image = image
+        guard
+            let currentBuffer = currentBuffer,
+//            let image = UIImage(pixelBuffer: currentBuffer),
+            let textFrames = currentTextFrames
+            else {return}
+        
+        let imageSlicer = ImageSlicer(pixelBuffer: currentBuffer, rects: textFrames)
+        imageSlicer.getSlices { (images) in
+            let photoVC = PhotoViewController(nibName: nil, bundle: nil)
+            photoVC.image = images.first
+            self.navigationController?.pushViewController(photoVC, animated: true)
         }
     }
 }
 
 extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {return}
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+            return
+        }
         
         currentBuffer = pixelBuffer
         
@@ -83,7 +87,7 @@ extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             requestOptions = [.cameraIntrinsics:camData]
         }
         
-        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: CGImagePropertyOrientation(rawValue: 6)!, options: requestOptions)
+        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: CGImagePropertyOrientation(rawValue: 0)!, options: requestOptions)
         
         do {
             try imageRequestHandler.perform(self.requests)
@@ -128,14 +132,14 @@ extension VNTextObservation {
 //        var xMax: CGFloat = boxes.map{$0.bottomRight.x}.max()
 //        var yMin: CGFloat = boxes.map{$0.bottomRight.y}.min()
 //        var yMax: CGFloat = boxes.map{$0.topRight.y}.max()
-    
+//    
 //        for char in boxes {
 //            if char.bottomLeft.x < xMin {xMin = char.bottomLeft.x}
 //            if char.bottomRight.x > xMax {xMax = char.bottomRight.x}
 //            if char.bottomRight.y < yMin {yMin = char.bottomRight.y}
 //            if char.topRight.y > yMax {yMax = char.topRight.y}
 //        }
-        
+//        
 //        let xCoord = xMin * frame.size.width
 //        let yCoord = (1 - yMax) * frame.size.height
 //        let width = (xMax - xMin) * frame.size.width

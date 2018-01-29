@@ -7,16 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D35BBFF6AAD914943E8FEE5 /* Pods_iLens.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4946F4988127A14AC982B8F7 /* Pods_iLens.framework */; };
+		3F2102AE1FBC6BAC00F62BE3 /* ImageSlicer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2102AD1FBC6BAC00F62BE3 /* ImageSlicer.swift */; };
+		3F2102B31FBC88BD00F62BE3 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2102B11FBC88BD00F62BE3 /* PhotoViewController.swift */; };
+		3F2102B41FBC88BD00F62BE3 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2102B21FBC88BD00F62BE3 /* PhotoViewController.xib */; };
 		50DB3CC11F92193F00242DAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DB3CC01F92193F00242DAF /* AppDelegate.swift */; };
 		50DB3CC31F92193F00242DAF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DB3CC21F92193F00242DAF /* ViewController.swift */; };
 		50DB3CC61F92193F00242DAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50DB3CC41F92193F00242DAF /* Main.storyboard */; };
 		50DB3CC81F92193F00242DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50DB3CC71F92193F00242DAF /* Assets.xcassets */; };
 		50DB3CCB1F92193F00242DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50DB3CC91F92193F00242DAF /* LaunchScreen.storyboard */; };
 		50DB3CD31F921A8500242DAF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DB3CD21F921A8500242DAF /* CameraView.swift */; };
-		50DB3CD61F93AEE100242DAF /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DB3CD41F93AEE100242DAF /* PhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35BD92808402CFB32899C245 /* Pods-iLens.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLens.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iLens/Pods-iLens.debug.xcconfig"; sourceTree = "<group>"; };
+		3F2102AD1FBC6BAC00F62BE3 /* ImageSlicer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSlicer.swift; sourceTree = "<group>"; };
+		3F2102B11FBC88BD00F62BE3 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		3F2102B21FBC88BD00F62BE3 /* PhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
+		4946F4988127A14AC982B8F7 /* Pods_iLens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iLens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DB3CBD1F92193F00242DAF /* iLens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DB3CC01F92193F00242DAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50DB3CC21F92193F00242DAF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +33,7 @@
 		50DB3CCA1F92193F00242DAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50DB3CCC1F92193F00242DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50DB3CD21F921A8500242DAF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		50DB3CD41F93AEE100242DAF /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		54F99894FCFBBD22AE8B1DC9 /* Pods-iLens.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iLens.release.xcconfig"; path = "Pods/Target Support Files/Pods-iLens/Pods-iLens.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +41,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D35BBFF6AAD914943E8FEE5 /* Pods_iLens.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F7888E0E634D89D338F5672 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4946F4988127A14AC982B8F7 /* Pods_iLens.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		50DB3CB41F92193F00242DAF = {
 			isa = PBXGroup;
 			children = (
 				50DB3CBF1F92193F00242DAF /* iLens */,
 				50DB3CBE1F92193F00242DAF /* Products */,
+				FB00C803E592F1E57BC0A4BC /* Pods */,
+				2F7888E0E634D89D338F5672 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,9 +84,20 @@
 				50DB3CC91F92193F00242DAF /* LaunchScreen.storyboard */,
 				50DB3CCC1F92193F00242DAF /* Info.plist */,
 				50DB3CD21F921A8500242DAF /* CameraView.swift */,
-				50DB3CD41F93AEE100242DAF /* PhotoViewController.swift */,
+				3F2102AD1FBC6BAC00F62BE3 /* ImageSlicer.swift */,
+				3F2102B11FBC88BD00F62BE3 /* PhotoViewController.swift */,
+				3F2102B21FBC88BD00F62BE3 /* PhotoViewController.xib */,
 			);
 			path = iLens;
+			sourceTree = "<group>";
+		};
+		FB00C803E592F1E57BC0A4BC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				35BD92808402CFB32899C245 /* Pods-iLens.debug.xcconfig */,
+				54F99894FCFBBD22AE8B1DC9 /* Pods-iLens.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +107,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50DB3CCF1F92193F00242DAF /* Build configuration list for PBXNativeTarget "iLens" */;
 			buildPhases = (
+				0A74C4C52432AF9B33252A88 /* [CP] Check Pods Manifest.lock */,
 				50DB3CB91F92193F00242DAF /* Sources */,
 				50DB3CBA1F92193F00242DAF /* Frameworks */,
 				50DB3CBB1F92193F00242DAF /* Resources */,
+				5D24F39DF5DA984B370A5258 /* [CP] Embed Pods Frameworks */,
+				07B5302757349E383D8EF3B8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50DB3CCB1F92193F00242DAF /* LaunchScreen.storyboard in Resources */,
+				3F2102B41FBC88BD00F62BE3 /* PhotoViewController.xib in Resources */,
 				50DB3CC81F92193F00242DAF /* Assets.xcassets in Resources */,
 				50DB3CC61F92193F00242DAF /* Main.storyboard in Resources */,
 			);
@@ -137,15 +171,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		07B5302757349E383D8EF3B8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iLens/Pods-iLens-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0A74C4C52432AF9B33252A88 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iLens-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5D24F39DF5DA984B370A5258 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iLens/Pods-iLens-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iLens/Pods-iLens-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		50DB3CB91F92193F00242DAF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				50DB3CD31F921A8500242DAF /* CameraView.swift in Sources */,
-				50DB3CD61F93AEE100242DAF /* PhotoViewController.swift in Sources */,
 				50DB3CC31F92193F00242DAF /* ViewController.swift in Sources */,
+				3F2102AE1FBC6BAC00F62BE3 /* ImageSlicer.swift in Sources */,
 				50DB3CC11F92193F00242DAF /* AppDelegate.swift in Sources */,
+				3F2102B31FBC88BD00F62BE3 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,10 +369,11 @@
 		};
 		50DB3CD01F92193F00242DAF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35BD92808402CFB32899C245 /* Pods-iLens.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E6Z69EMARN;
+				DEVELOPMENT_TEAM = KY38SK8AD3;
 				INFOPLIST_FILE = iLens/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = phnx.iLens;
@@ -295,10 +385,11 @@
 		};
 		50DB3CD11F92193F00242DAF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54F99894FCFBBD22AE8B1DC9 /* Pods-iLens.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E6Z69EMARN;
+				DEVELOPMENT_TEAM = KY38SK8AD3;
 				INFOPLIST_FILE = iLens/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = phnx.iLens;
