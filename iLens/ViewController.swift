@@ -18,7 +18,8 @@ class ViewController: UIViewController {
     var capturedImage: CGImage?
     
     var currentBuffer: CVPixelBuffer?
-    var currentTextFrames: [CGRect]?
+//    var currentTextFrames: [CGRect]?
+    var currentTextFrame: CGRect?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,11 +44,12 @@ class ViewController: UIViewController {
         
         let result = observations.flatMap({$0 as? VNTextObservation})
         
-        currentTextFrames = result.map{ $0.boundingBox }
+        let textFrames = result.map{ $0.boundingBox }
+        currentTextFrame = textFrames.first(where: { $0.insetBy(dx: -0.1, dy: -0.1).contains(CGPoint(x: 0.5, y: 0.5)) })?.insetBy(dx: -0.01, dy: -0.01)
         DispatchQueue.main.async() {
             self.cameraView.clearTextBoxes()
-            for region in result {
-                self.cameraView.drawRegionBox(box: region)
+            if let currentTextFrame = self.currentTextFrame {
+                self.cameraView.drawRegionBox(box: currentTextFrame)
             }
         }
     }
@@ -60,11 +62,10 @@ class ViewController: UIViewController {
     @IBAction func captureTapped(_ sender: Any) {
         guard
             let currentBuffer = currentBuffer,
-//            let image = UIImage(pixelBuffer: currentBuffer),
-            let textFrames = currentTextFrames
+            let textFrame = currentTextFrame
             else {return}
         
-        let imageSlicer = ImageSlicer(pixelBuffer: currentBuffer, rects: textFrames)
+        let imageSlicer = ImageSlicer(pixelBuffer: currentBuffer, rects: [textFrame])
         imageSlicer.getSlices { (images) in
             let photoVC = PhotoViewController(nibName: nil, bundle: nil)
             photoVC.image = images.first
@@ -123,27 +124,5 @@ extension UIImage {
             return nil
         }
     }
-}
-
-extension VNTextObservation {
-//    var textBoxInFrame {
-//        guard let boxes = self.characterBoxes else { return nil }
-//        var xMin: CGFloat = boxes.map{$0.bottomLeft.x}.min()
-//        var xMax: CGFloat = boxes.map{$0.bottomRight.x}.max()
-//        var yMin: CGFloat = boxes.map{$0.bottomRight.y}.min()
-//        var yMax: CGFloat = boxes.map{$0.topRight.y}.max()
-//    
-//        for char in boxes {
-//            if char.bottomLeft.x < xMin {xMin = char.bottomLeft.x}
-//            if char.bottomRight.x > xMax {xMax = char.bottomRight.x}
-//            if char.bottomRight.y < yMin {yMin = char.bottomRight.y}
-//            if char.topRight.y > yMax {yMax = char.topRight.y}
-//        }
-//        
-//        let xCoord = xMin * frame.size.width
-//        let yCoord = (1 - yMax) * frame.size.height
-//        let width = (xMax - xMin) * frame.size.width
-//        let height = (yMax - yMin) * frame.size.height
-//    }
 }
 

@@ -12,6 +12,7 @@
 		3F2102B31FBC88BD00F62BE3 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2102B11FBC88BD00F62BE3 /* PhotoViewController.swift */; };
 		3F2102B41FBC88BD00F62BE3 /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2102B21FBC88BD00F62BE3 /* PhotoViewController.xib */; };
 		3FB379E6201F7C27001A68A8 /* tessdata in Resources */ = {isa = PBXBuildFile; fileRef = 3FB379E5201F7C27001A68A8 /* tessdata */; };
+		3FB379E82020E12D001A68A8 /* RecognizedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB379E72020E12D001A68A8 /* RecognizedItem.swift */; };
 		50DB3CC11F92193F00242DAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DB3CC01F92193F00242DAF /* AppDelegate.swift */; };
 		50DB3CC31F92193F00242DAF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DB3CC21F92193F00242DAF /* ViewController.swift */; };
 		50DB3CC61F92193F00242DAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50DB3CC41F92193F00242DAF /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		3F2102B11FBC88BD00F62BE3 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		3F2102B21FBC88BD00F62BE3 /* PhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 		3FB379E5201F7C27001A68A8 /* tessdata */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tessdata; sourceTree = "<group>"; };
+		3FB379E72020E12D001A68A8 /* RecognizedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizedItem.swift; sourceTree = "<group>"; };
 		4946F4988127A14AC982B8F7 /* Pods_iLens.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iLens.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DB3CBD1F92193F00242DAF /* iLens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50DB3CC01F92193F00242DAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				3F2102AD1FBC6BAC00F62BE3 /* ImageSlicer.swift */,
 				3F2102B11FBC88BD00F62BE3 /* PhotoViewController.swift */,
 				3F2102B21FBC88BD00F62BE3 /* PhotoViewController.xib */,
+				3FB379E72020E12D001A68A8 /* RecognizedItem.swift */,
 			);
 			path = iLens;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FB379E82020E12D001A68A8 /* RecognizedItem.swift in Sources */,
 				50DB3CD31F921A8500242DAF /* CameraView.swift in Sources */,
 				50DB3CC31F92193F00242DAF /* ViewController.swift in Sources */,
 				3F2102AE1FBC6BAC00F62BE3 /* ImageSlicer.swift in Sources */,

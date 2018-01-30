@@ -28,8 +28,8 @@
                         <constraint firstAttribute="width" constant="300" id="WsC-Qa-2xK"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4N-CU-1Ri">
-                    <rect key="frame" x="156.5" y="507" width="62" height="32"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T4N-CU-1Ri">
+                    <rect key="frame" x="0.0" y="507" width="375" height="32"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -40,6 +40,7 @@
                 <constraint firstItem="T4N-CU-1Ri" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="01N-SG-red"/>
                 <constraint firstItem="T4N-CU-1Ri" firstAttribute="top" secondItem="ImA-OD-avV" secondAttribute="bottom" constant="24" id="2MH-FD-TCa"/>
                 <constraint firstItem="ImA-OD-avV" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="M86-BL-dYd"/>
+                <constraint firstItem="T4N-CU-1Ri" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="ONa-6z-y4s"/>
                 <constraint firstItem="ImA-OD-avV" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dk6-jo-nMe"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
