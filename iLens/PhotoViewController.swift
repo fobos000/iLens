@@ -8,6 +8,7 @@
 
 import UIKit
 import TesseractOCR
+import PhoneNumberKit
 
 class PhotoViewController: UIViewController {
 
@@ -30,8 +31,16 @@ class PhotoViewController: UIViewController {
                 DispatchQueue.main.async {
                     let recognizedText = tesseract.recognizedText.trimmingCharacters(in: .whitespacesAndNewlines)
                     self.textLabel.text = recognizedText
-                    print(email(from: recognizedText) ?? "no email")
-                    print(verifyUrl(urlString: recognizedText) ? "URL" : "not url")
+                    
+                    var recognizedItem: RecognizedItem
+                    if let email = email(from: recognizedText) {
+                        recognizedItem = RecognizedEmailItem(text: recognizedText, emailURL: email)
+                    } else if let phoneNumber = verifyPhoneNumber(recognizedText) {
+                        recognizedItem = RecognizedPhoteNumberItem(text: recognizedText, phoneURL: phoneNumber)
+                    } else {
+                        recognizedItem = RecognizedTextItem(text: recognizedText)
+                    }
+                    self.showMenuFor(item: recognizedItem)
                 }
             }
         }
@@ -66,9 +75,11 @@ func verifyUrl(urlString: String) -> Bool {
     return false
 }
 
-func email(from text: String) -> String? {
+func email(from text: String) -> URL? {
     let allMatches = matches(for: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}", in: text)
-    return allMatches.first
+    guard let match = allMatches.first else { return nil }
+    
+    return URL(string: "mailto://" + match)
 }
 
 func matches(for regex: String, in text: String) -> [String] {
@@ -82,4 +93,18 @@ func matches(for regex: String, in text: String) -> [String] {
         print("invalid regex: \(error.localizedDescription)")
         return []
     }
+}
+
+func verifyPhoneNumber(_ number: String) -> URL? {
+    var phoneNumber: String
+    do {
+        let phoneNumberKit = PhoneNumberKit()
+        phoneNumber = try phoneNumberKit.parse(number).numberString
+        return URL(string: "tel://" + phoneNumber)
+    }
+    catch {
+        print("Generic parser error")
+    }
+    
+    return nil
 }

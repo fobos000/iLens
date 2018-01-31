@@ -1,12 +1,20 @@
 PODS:
+  - PhoneNumberKit (2.0.0):
+    - PhoneNumberKit/PhoneNumberKitCore (= 2.0.0)
+    - PhoneNumberKit/UIKit (= 2.0.0)
+  - PhoneNumberKit/PhoneNumberKitCore (2.0.0)
+  - PhoneNumberKit/UIKit (2.0.0):
+    - PhoneNumberKit/PhoneNumberKitCore
   - TesseractOCRiOS (4.0.0)
 
 DEPENDENCIES:
+  - PhoneNumberKit
   - TesseractOCRiOS
 
 SPEC CHECKSUMS:
+  PhoneNumberKit: 073b3cef30c2a64ddcd623ea5953bc84bb5b3fc4
   TesseractOCRiOS: 90638afbe43d082433f2e76b384c7901d23956df
 
-PODFILE CHECKSUM: 76be51f23c570e1f662f405ad11f573781945034
+PODFILE CHECKSUM: 3dd3c4cf927189932c83f3d760ef7300ddea8713
 
 COCOAPODS: 1.3.1

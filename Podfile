@@ -5,4 +5,5 @@ platform :ios, '11.0'
 target 'iLens' do
   use_frameworks!
   pod 'TesseractOCRiOS'
+  pod 'PhoneNumberKit'
 end
