@@ -12,35 +12,17 @@ import Vision
 
 class CameraView: UIView {
     
-    let stillImageOutput = AVCapturePhotoOutput()
-    
-    private(set) weak var photoOutputDelegate: AVCapturePhotoCaptureDelegate?
-    lazy var photoOutput: AVCapturePhotoOutput = {
-        let photoOutput = AVCapturePhotoOutput()
-        photoOutput.isHighResolutionCaptureEnabled = true
-        
-        return photoOutput
-    }()
-    
     func startCamera() {
         self.session = AVCaptureSession()
         guard let device = AVCaptureDevice.default(for: AVMediaType.video) else {
             return
         }
+        
         guard let input = try? AVCaptureDeviceInput(device: device) else {
             return
         }
         
         session?.addInput(input)
-//        let prevLayer = AVCaptureVideoPreviewLayer(session: session)
-//        prevLayer.frame.size = frame.size
-//        prevLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-//        prevLayer.connection?.videoOrientation = .portrait
-        
-//        delegate.map{ self.setVideoOutputDelegate($0) }
-        
-//        layer.addSublayer(prevLayer)
-        
         videoPreviewLayer.videoGravity = .resize
         session?.startRunning()
     }
@@ -66,17 +48,6 @@ class CameraView: UIView {
         return AVCaptureVideoPreviewLayer.self
     }
     
-    func makePhoto() {
-        guard let photoOutputDelegate = photoOutputDelegate else { return }
-        
-        let photoSettings = AVCapturePhotoSettings()
-        photoSettings.isHighResolutionPhotoEnabled = true
-        if !photoSettings.__availablePreviewPhotoPixelFormatTypes.isEmpty {
-            photoSettings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: photoSettings.__availablePreviewPhotoPixelFormatTypes.first!]
-        }
-        photoOutput.capturePhoto(with: photoSettings, delegate: photoOutputDelegate)
-    }
-    
     func setVideoOutputDelegate(_ delegate: AVCaptureVideoDataOutputSampleBufferDelegate) {
         let videoOutput = AVCaptureVideoDataOutput()
         videoOutput.setSampleBufferDelegate(delegate, queue: DispatchQueue(label: "buffer queue", qos: .userInteractive, attributes: .concurrent, autoreleaseFrequency: .inherit, target: nil))
@@ -87,13 +58,6 @@ class CameraView: UIView {
             if let connection = connection, connection.isVideoOrientationSupported {
                 connection.videoOrientation = .portrait
             }
-        }
-    }
-    
-    func setPhotoOutputDelegate(_ delegate: AVCapturePhotoCaptureDelegate) {
-        photoOutputDelegate = delegate
-        if let session = session, session.canAddOutput(photoOutput) {
-            session.addOutput(photoOutput)
         }
     }
     

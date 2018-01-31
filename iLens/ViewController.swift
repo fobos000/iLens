@@ -26,7 +26,6 @@ class ViewController: UIViewController {
         
         cameraView.startCamera()
         cameraView.setVideoOutputDelegate(self)
-        cameraView.setPhotoOutputDelegate(self)
         setupVision()
     }
     

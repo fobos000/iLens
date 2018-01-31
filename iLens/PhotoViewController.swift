@@ -23,8 +23,8 @@ class PhotoViewController: UIViewController {
         imageView.image = image
         
         DispatchQueue.global(qos: .background).async {
-            if let image = self.image, let tesseract = G8Tesseract(language: "eng") {
-                tesseract.engineMode = .tesseractCubeCombined
+            if let image = self.image, let tesseract = G8Tesseract(language: "ukr+eng") {
+                tesseract.engineMode = .tesseractOnly
                 tesseract.pageSegmentationMode = .auto
                 tesseract.image = image.g8_blackAndWhite()
                 tesseract.recognize()
